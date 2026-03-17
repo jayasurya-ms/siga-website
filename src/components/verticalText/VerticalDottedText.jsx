@@ -1,6 +1,7 @@
+"use no memo";
 import React, { useEffect, useRef } from 'react';
 
-const VerticalDottedText = () => {
+function VerticalDottedText() {
   const text = "SIGA";
   const containerRef = useRef(null);
   const lettersRef = useRef([]);

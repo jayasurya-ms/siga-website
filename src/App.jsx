@@ -18,6 +18,7 @@ import SuspenseLoader from "./components/loader/SuspenseLoader.jsx";
 import GalleryAllByYear from "./pages/gallery/GalleryAllByYear.jsx";
 import EventAnnouncement from "./pages/event/EventAnnouncement.jsx";
 import EventAnnounce from "./pages/event/EventAnnounce.jsx";
+import CreateParticipation from "./pages/participants/create-participant.jsx";
 
 const Home = lazy(() => import("./pages/home/Home"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
@@ -32,7 +33,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <Toaster richColors position="bottom-right" />
+        <Toaster richColors position="top-right" />
 
         <VerticalDottedText />
         <ScrollToTop />
@@ -80,14 +81,14 @@ function App() {
                 </Suspense>
               }
             />
-            {/* <Route
-              path="/event2"
+            <Route
+              path="/participants/create"
               element={
                 <Suspense fallback={<SuspenseLoader />}>
-                  <EventAnnounce />
+                  <CreateParticipation />
                 </Suspense>
               }
-            /> */}
+            />
             <Route
               path="/service"
               element={

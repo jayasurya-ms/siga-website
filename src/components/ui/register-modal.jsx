@@ -111,7 +111,7 @@ const RegistrationModal = ({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="px-4 py-2 bg-[#780900] text-white rounded-md"
+                  className="px-4 py-2 bg-[#394263] text-white rounded-md"
                 >
                   {loading ? "Submitting..." : "Submit"}
                 </button>
