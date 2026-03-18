@@ -19,8 +19,6 @@ import axios from "axios";
 import { toast } from "sonner";
 import BASE_URL from "@/config/BaseUrl";
 import { motion, AnimatePresence } from "framer-motion";
-import bannerl from "../../assets/images/create-l.jpg";
-import bannerm from "../../assets/images/create-m.WEBP";
 import upi from "../../assets/images/siga-qr.jpg";
 
 const PageHighlight = ({ children, className }) => {
@@ -273,7 +271,7 @@ const formSchema = z.object({
   designation: z.string().optional(),
   rep1_mobile: z.string().min(10, "Mobile must be at least 10 digits"),
   profile_email: z.string().email("Invalid email address"),
-  gst_no: z.string().min(1, "GSTN is required"),
+  gst_no: z.string().min(1, "GSTIN is required"),
   // Hidden fields with default values
   category_men: z.string().default("No"),
   category_women: z.string().default("No"),
@@ -343,7 +341,7 @@ const CreateParticipation = () => {
 
   const createParticipationMutation = useMutation({
     mutationFn: async (values) => {
-      console.log("Submitting values to API:", values);
+      // console.log("Submitting values to API:", values);
       const response = await axios.post(
         `${BASE_URL}/api/create-participant`,
         values,
@@ -354,6 +352,7 @@ const CreateParticipation = () => {
       if (data.code === "201" || data.status === "success") {
         toast.success("Participation created successfully!");
         form.reset();
+        navigate("/");
       } else {
         toast.error(data.msg || "Something went wrong!");
       }
@@ -379,10 +378,10 @@ const CreateParticipation = () => {
   };
 
   return (
-    <div className="relative w-full pt-28 pb-20 bg-white overflow-hidden">
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative w-full min-h-screen h-full pt-28 pb-20 bg-white overflow-hidden">
+      <div className="relative z-10 max-w-6xl mx-auto sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -395,19 +394,25 @@ const CreateParticipation = () => {
           </p>
         </motion.div>
 
-        <div className="bg-white p-6 md:p-10 rounded-2xl border-2 border-gray-100 shadow-2xl relative overflow-hidden">
-          {/* Banner Space inside the card */}
-          <div className="w-full h-[250px] md:h-[300px] rounded-xl mb-8 overflow-hidden relative">
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
-              style={{ backgroundImage: `url(${bannerm})` }}
-            />
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block"
-              style={{ backgroundImage: `url(${bannerl})` }}
+        {/* Banner Space inside the card */}
+        <div className="w-full mb-6 overflow-hidden relative">
+          <div className="md:hidden">
+            <img
+              src="https://southindiagarmentsassociation.com/crmapi/public/assets/images/events/create-m.webp"
+              alt=""
+              className="w-full h-auto"
             />
           </div>
+          <div className="hidden md:block">
+            <img
+              src="https://southindiagarmentsassociation.com/crmapi/public/assets/images/events/create-l.jpg"
+              alt=""
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
 
+        <div className="bg-white p-6 md:p-10 rounded-2xl md:border-2 md:border-gray-100 relative overflow-hidden">
           {/* Decorative background element */}
           <div className="absolute top-0 right-0 -tr-1/4 w-64 h-64 bg-blue-50/50 rounded-full blur-3xl -z-10"></div>
           <div className="absolute bottom-0 left-0 tr-1/4 w-64 h-64 bg-indigo-50/50 rounded-full blur-3xl -z-10"></div>
@@ -593,7 +598,7 @@ const CreateParticipation = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-gray-700 font-semibold">
-                        GSTN *
+                        GSTIN *
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -652,27 +657,7 @@ const CreateParticipation = () => {
                   </h3>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="profile_amount"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 font-semibold">
-                          Amount (₹)
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Enter amount"
-                            {...field}
-                            className="border-gray-200 focus:border-[#314899] focus:ring-[#314899]"
-                          />
-                        </FormControl>
-                        <FormMessage className="text-red-500" />
-                      </FormItem>
-                    )}
-                  />
-
+                <div className="grid grid-cols-1 md:grid-cols gap-6">
                   <FormField
                     control={form.control}
                     name="profile_payment"
@@ -682,7 +667,7 @@ const CreateParticipation = () => {
                           Payment Reference / TXN ID
                         </FormLabel>
                         <FormControl>
-                          <Input
+                          <Textarea
                             placeholder="Enter transaction reference"
                             {...field}
                             className="border-gray-200 focus:border-[#314899] focus:ring-[#314899]"
@@ -694,54 +679,12 @@ const CreateParticipation = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="profile_received_amt"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 font-semibold">
-                          Received Amount (₹)
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Enter received amount"
-                            {...field}
-                            className="border-gray-200 focus:border-[#314899] focus:ring-[#314899]"
-                          />
-                        </FormControl>
-                        <FormMessage className="text-red-500" />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="profile_remark"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-gray-700 font-semibold">
-                          Remarks
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Enter any remarks"
-                            {...field}
-                            className="border-gray-200 focus:border-[#314899] focus:ring-[#314899]"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
                 <div className="pt-4">
                   <FormField
                     control={form.control}
                     name="terms_accepted"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md p-4 border border-gray-100 bg-gray-50/50">
+                      <FormItem className="flex flex-row items-start space-x-3">
                         <FormControl>
                           <Checkbox
                             checked={field.value}
@@ -750,7 +693,7 @@ const CreateParticipation = () => {
                         </FormControl>
                         <div className="space-y-1 leading-none">
                           <p className="text-sm font-medium text-gray-700">
-                            I agree to the{" "}
+                            I read and agree to the{" "}
                             <button
                               type="button"
                               onClick={() => setIsTermsOpen(true)}

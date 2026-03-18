@@ -187,37 +187,36 @@ export default function EventAnnouncement() {
 
       <header
         ref={heroRef}
-        className="relative py-16 md:py-24 lg:py-32 px-4 bg-gradient-to-b from-[#c9f7f9] via-[#536999] to-[#394263]"
+        className="relative py-25 md:py-24 lg:py-32 px-4 bg-gradient-to-b from-[#c9f7f9] via-[#536999] to-[#394263]"
       >
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6">
               <span className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-[#fff0f0] to-[#fff9f8] text-[#314899] text-sm font-semibold shadow-sm">
-                31ST EDITION • 2026
+                Autumn Winter
               </span>
               <h1 className="mt-6 text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white">
                 31st SIGA Fair
-                <span className="block text-lg sm:text-2xl lg:text-3xl font-semibold text-white mt-2">
-                  Autumn Winter
-                </span>
               </h1>
               <p className="mt-4 text-sm sm:text-base text-white max-w-xl">
                 Organized by{" "}
                 <strong className="font-semibold text-white">
                   South India Garments Association (SIGA)
                 </strong>
-                . Join 500+ brands showcasing latest collections to retailers,
-                wholesalers, and buyers nationwide.
+                . Join 100+ brands showcasing their latest Autumn Winter
+                Collections.
               </p>
               <div className="mt-6 flex flex-wrap gap-3 items-center">
                 <motion.button
-                  onClick={() => setOpenReg(true)}
+                  onClick={() => {
+                    navigate("/participants-form");
+                  }}
                   whileHover={{ scale: shouldReduce ? 1 : 1.035 }}
                   whileTap={{ scale: shouldReduce ? 1 : 0.985 }}
                   onMouseDown={ripple}
                   className="relative inline-flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-[#ffffff] to-[#ffffff] text-[#394263] rounded-full shadow-2xl font-semibold focus:outline-none overflow-hidden"
                 >
-                  REGISTER
+                  Book Now
                 </motion.button>
 
                 <div className="ml-0 sm:ml-2 text-sm text-white w-full sm:w-auto">
@@ -225,7 +224,7 @@ export default function EventAnnouncement() {
                 </div>
               </div>
               <div className="m-2 mt-5 text-white">VISITORS : </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 md:w-[80%] w-full ">
                 <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
                   Retail stores
                 </span>
@@ -233,13 +232,13 @@ export default function EventAnnouncement() {
                   Online Sellers
                 </span>
                 <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
-                  Large Format Stores
-                </span>
-                <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
                   Buying House
                 </span>
                 <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
                   Wholesalers
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
+                  Large Format Stores
                 </span>
                 <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
                   Distributors
@@ -564,7 +563,7 @@ export default function EventAnnouncement() {
                 {[
                   {
                     type: "Business Stall",
-                    size: "12 Sqr Mtr 120 sq ft",
+                    size: "12 Sqr Mtr 129 sq ft",
                     size2: "(4 X 3)",
                     price: "₹ 70,800",
                     include1: "1 Table, 2 chair, 3 spot light, 1 halogen lamp,",
@@ -573,7 +572,7 @@ export default function EventAnnouncement() {
                   },
                   {
                     type: "Brand Wagon",
-                    size: "24 Sqr Mtr 240 sq ft",
+                    size: "24 Sqr Mtr 258 sq ft",
                     size2: "(6 X 4)",
                     price: "₹ 1,41,600",
                     include1: "2 Table, 4 chair, 4 spot light, 2 halogen lamp,",
@@ -582,7 +581,7 @@ export default function EventAnnouncement() {
                   },
                   {
                     type: "Premium Wagon",
-                    size: "30 Sqr Mtr 300 sq ft",
+                    size: "30 Sqr Mtr 322 sq ft",
                     size2: "(6 X 5)",
                     price: "₹ 1,77,000",
                     include1:
@@ -592,7 +591,7 @@ export default function EventAnnouncement() {
                   },
                   {
                     type: "Executive Wagon",
-                    size: "40 Sqr Mtr 400 sq ft",
+                    size: "40 Sqr Mtr 428 sq ft",
                     size2: "(8 X 5)",
                     price: "₹ 2,36,000",
                     include1:
@@ -602,7 +601,7 @@ export default function EventAnnouncement() {
                   },
                   {
                     type: "Executive Wagon plus",
-                    size: "48 Sqr Mtr 480 sq ft",
+                    size: "48 Sqr Mtr 516 sq ft",
                     size2: "(8 X 6)",
                     price: "₹ 2,83,200",
                     include1:
@@ -654,7 +653,7 @@ export default function EventAnnouncement() {
 
                     <Button
                       className="w-full bg-[#394263] hover:bg-[#314899] text-white font-bold py-3 rounded-xl shadow-lg transition-all active:scale-95"
-                      onClick={() => navigate("/participants/create")}
+                      onClick={() => navigate("/participants-form")}
                     >
                       BOOK NOW
                     </Button>
@@ -684,7 +683,7 @@ export default function EventAnnouncement() {
                       {[
                         {
                           type: "Business Stall",
-                          size: "12 Sqr Mtr 120 sq ft",
+                          size: "12 Sqr Mtr 129 sq ft",
                           size2: "(4 X 3)",
                           price: "₹ 70,800",
                           include1:
@@ -694,7 +693,7 @@ export default function EventAnnouncement() {
                         },
                         {
                           type: "Brand Wagon",
-                          size: "24 Sqr Mtr 240 sq ft",
+                          size: "24 Sqr Mtr 258 sq ft",
                           size2: "(6 X 4)",
                           price: "₹ 1,41,600",
                           include1:
@@ -704,7 +703,7 @@ export default function EventAnnouncement() {
                         },
                         {
                           type: "Premium Wagon",
-                          size: "30 Sqr Mtr 300 sq ft",
+                          size: "30 Sqr Mtr 322 sq ft",
                           size2: "(6 X 5)",
                           price: "₹ 1,77,000",
                           include1:
@@ -714,7 +713,7 @@ export default function EventAnnouncement() {
                         },
                         {
                           type: "Executive Wagon",
-                          size: "40 Sqr Mtr 400 sq ft",
+                          size: "40 Sqr Mtr 428 sq ft",
                           size2: "(8 X 5)",
                           price: "₹ 2,36,000",
                           include1:
@@ -724,7 +723,7 @@ export default function EventAnnouncement() {
                         },
                         {
                           type: "Executive Wagon plus",
-                          size: "48 Sqr Mtr 480 sq ft",
+                          size: "48 Sqr Mtr 516 sq ft",
                           size2: "(8 X 6)",
                           price: "₹ 2,83,200",
                           include1:
@@ -769,7 +768,7 @@ export default function EventAnnouncement() {
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                               className="px-6 py-2 bg-[#394263] hover:bg-[#314899] text-white text-sm font-bold flex items-center gap-2 rounded-lg shadow-md transition-all"
-                              onClick={() => navigate("/participants/create")}
+                              onClick={() => navigate("/participants-form")}
                             >
                               <ChevronRight size={14} />
                               BOOK NOW
@@ -813,7 +812,7 @@ export default function EventAnnouncement() {
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
                 onClick={() => {
-                  navigate("/participants/create");
+                  navigate("/participants-form");
                 }}
                 className="px-6 py-3 bg-white text-[#394263] rounded-full font-semibold shadow"
                 onMouseDown={ripple}
@@ -833,17 +832,17 @@ export default function EventAnnouncement() {
             </div>
           </div>
         </footer>
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative md:h-[80vh] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#394263]/10  to-[#394263]/10"></div>
 
-          <div className="container max-w-7xl mx-auto px-4 md:px-8 ">
+          <div className="container max-w-7xl mx-auto py-20 md:py-0 px-4 md:px-8 ">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="flex items-center justify-center gap-3 mb-4 ">
                 <Calendar className="text-[#394263]" size={28} />
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
                   Event Schedule

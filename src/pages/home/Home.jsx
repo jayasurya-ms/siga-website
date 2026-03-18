@@ -1,13 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { Suspense, useEffect, useState } from "react";
 
-import  HeroSection  from "./HeroSection";
+import HeroSection from "./HeroSection";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import BASE_URL from "@/config/BaseUrl";
-
-
-
 
 const WhyChoose = React.lazy(() => import("@/pages/home/WhyChoose"));
 const ShowCaseCloth = React.lazy(() => import("@/pages/home/ShowCaseCloth"));
@@ -18,27 +15,24 @@ const TeamMeeting = React.lazy(() => import("@/pages/home/TeamMeeting"));
 const PhotoGallery = React.lazy(() => import("@/components/ui/photo-gallery"));
 const ShuffleHero = React.lazy(() => import("@/components/ui/shuffle-grid"));
 
-
 const updateVisitorCount = async () => {
-  
-  const response = await axios.put(
-     `${BASE_URL}/api/update-visitors/1`,
-    {}, 
-    
-  );
+  const response = await axios.put(`${BASE_URL}/api/update-visitors/1`, {});
   return response.data;
 };
 
-const BANNER_URL =
+const BANNER_URL_web =
   "https://southindiagarmentsassociation.com/crmapi/public/assets/images/banner/31.jpg";
+
+const BANNER_URL_mob =
+  "https://southindiagarmentsassociation.com/crmapi/public/assets/images/events/create-m.webp";
 
 const Home = () => {
   const queryClient = useQueryClient();
-   const [showBanner, setShowBanner] = useState(true);
+  const [showBanner, setShowBanner] = useState(true);
   const mutation = useMutation({
     mutationFn: updateVisitorCount,
     onSuccess: () => {
-// console.log('visitor count',data)
+      // console.log('visitor count',data)
       queryClient.invalidateQueries(["visitorCount"]);
     },
     onError: (error) => {
@@ -46,81 +40,76 @@ const Home = () => {
     },
   });
 
-  
   useEffect(() => {
     mutation.mutate();
   }, []);
 
   return (
     <>
-
-       {showBanner && (
+      {showBanner && (
         <section className="w-full h-auto pt-24 sm:pt-24 md:pt-28 lg:pt-32">
           <img
-            src={BANNER_URL}
+            src={BANNER_URL_web}
             alt="Banner"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover hidden md:block"
+            onError={() => setShowBanner(false)}
+          />
+          <img
+            src={BANNER_URL_mob}
+            alt="Banner"
+            className="w-full h-full object-cover block md:hidden"
             onError={() => setShowBanner(false)}
           />
         </section>
       )}
       <HeroSection />
 
+      {/* <Suspense
+        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
+      > */}
+      <PhotoGallery />
+      {/* </Suspense> */}
 
       {/* <Suspense
         fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
       > */}
-  <PhotoGallery />
+      <ShuffleHero />
+      {/* </Suspense>
+      <Suspense
+        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
+      > */}
+      <WhyChoose />
+      {/* </Suspense>
+
+      <Suspense
+        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
+      > */}
+      {/* <Event /> */}
+      {/* </Suspense>
+
+      <Suspense
+        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
+      > */}
+      <HomeAbout />
+      {/* </Suspense>
+
+      <Suspense
+        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
+      > */}
+      <ShowCaseCloth />
+      {/* </Suspense>
+
+      <Suspense
+        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
+      > */}
+      <Testimonial />
+      {/* </Suspense>
+
+      <Suspense
+        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
+      > */}
+      <TeamMeeting />
       {/* </Suspense> */}
-
-     
-      {/* <Suspense
-        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
-      > */}
-       <ShuffleHero />
-      {/* </Suspense>
-      <Suspense
-        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
-      > */}
-       <WhyChoose />
-      {/* </Suspense>
-
-      <Suspense
-        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
-      > */}
-        {/* <Event /> */}
-      {/* </Suspense>
-
-      <Suspense
-        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
-      > */}
-         <HomeAbout />
-      {/* </Suspense>
-
-      <Suspense
-        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
-      > */}
-         <ShowCaseCloth />
-      {/* </Suspense>
-
-      <Suspense
-        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
-      > */}
-  <Testimonial />
-      {/* </Suspense>
-
-      <Suspense
-        fallback={<div className="h-[400px] bg-red-500 animate-pulse"></div>}
-      > */}
-        <TeamMeeting />
-      {/* </Suspense> */}
-
-   
-    
- 
-   
-     
-     
     </>
   );
 };

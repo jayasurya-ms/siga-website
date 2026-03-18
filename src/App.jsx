@@ -66,7 +66,7 @@ function App() {
               }
             />
             <Route
-              path="/event"
+              path="/event1"
               element={
                 <Suspense fallback={<SuspenseLoader />}>
                   <EventSection />
@@ -74,7 +74,7 @@ function App() {
               }
             />
             <Route
-              path="/event1"
+              path="/event"
               element={
                 <Suspense fallback={<SuspenseLoader />}>
                   <EventAnnouncement />
@@ -82,7 +82,7 @@ function App() {
               }
             />
             <Route
-              path="/participants/create"
+              path="/participants-form"
               element={
                 <Suspense fallback={<SuspenseLoader />}>
                   <CreateParticipation />

@@ -106,9 +106,9 @@ const BrandLogoSection = () => {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Users className="text-[#394263]" size={28} />
+            {/* <Users className="text-[#394263]" size={28} /> */}
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-              Our Partners
+              Our Esteemed Partners
             </h2>
           </div>
           <p className="text-gray-600 max-w-2xl mx-auto">
