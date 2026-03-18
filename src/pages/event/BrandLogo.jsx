@@ -106,9 +106,9 @@ const BrandLogoSection = () => {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Users className="text-[#780900]" size={28} />
+            {/* <Users className="text-[#394263]" size={28} /> */}
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-              Our Partners
+              Our Esteemed Partners
             </h2>
           </div>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -163,7 +163,7 @@ const BrandLogoSection = () => {
                 <div className="flex justify-center gap-3 md:gap-6 mb-8">
                   {Object.entries(timeLeft).map(([unit, value]) => (
                     <div key={unit} className="flex flex-col items-center">
-                      <div className="w-16 h-16 md:w-20 md:h-20 bg-[#780900] text-white border-2 border-gray-200 flex items-center justify-center mb-2">
+                      <div className="w-16 h-16 md:w-20 md:h-20 bg-[#394263] text-white border-2 border-gray-200 flex items-center justify-center mb-2">
                         <span className="text-2xl md:text-3xl font-bold ">
                           {value.toString().padStart(2, "0")}
                         </span>
@@ -183,8 +183,8 @@ const BrandLogoSection = () => {
                 className="flex flex-col md:flex-row justify-center gap-6 md:gap-12"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#CE1446]/10 flex items-center justify-center">
-                    <Calendar className="text-[#780900]" size={20} />
+                  <div className="w-10 h-10 bg-[#394263]/10 flex items-center justify-center">
+                    <Calendar className="text-[#394263]" size={20} />
                   </div>
                   <div>
                     <div className="text-sm text-gray-500">DATE</div>
@@ -195,8 +195,8 @@ const BrandLogoSection = () => {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#CE1446]/10 flex items-center justify-center">
-                    <MapPin className="text-[#780900]" size={20} />
+                  <div className="w-10 h-10 bg-[#394263]/10 flex items-center justify-center">
+                    <MapPin className="text-[#394263]" size={20} />
                   </div>
                   <div>
                     <div className="text-sm text-gray-500">VENUE</div>
@@ -218,7 +218,7 @@ const BrandLogoSection = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setOpenReg(true)}
-                className="px-10 py-4 bg-[#780900] text-white text-sm tracking-wider font-medium relative overflow-hidden group flex items-center justify-center gap-2"
+                className="px-10 py-4 bg-[#394263] text-white text-sm tracking-wider font-medium relative overflow-hidden group flex items-center justify-center gap-2"
               >
                 <span className="relative z-10">BOOK NOW</span>
                 <ChevronRight size={16} className="relative z-10" />

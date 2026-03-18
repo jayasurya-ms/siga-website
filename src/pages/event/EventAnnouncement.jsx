@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import RegistrationModal from "@/components/ui/register-modal";
 import { animate, motion, useReducedMotion } from "framer-motion";
 import { Award, Calendar, ChevronRight, Clock, DollarSign } from "lucide-react";
@@ -7,6 +8,9 @@ import { useQuery } from "@tanstack/react-query";
 import BASE_URL from "@/config/BaseUrl";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import arch from "../../assets/images/arch.jpg";
+import pathway from "../../assets/images/pathway.jpg";
+import bags from "../../assets/images/bags.jpg";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -22,20 +26,20 @@ export default function EventAnnouncement() {
   const schedule = [
     {
       day: "Day 1",
-      date: "29 July",
+      date: "28 July",
       time: "10:00 AM - 8:00 PM",
       title: "Grand Opening",
     },
     {
       day: "Day 2",
-      date: "30 July",
+      date: "29 July",
       time: "10:00 AM - 8:00 PM",
-      title: "B2B Meetings",
+      title: "Interactive Session",
     },
     {
       day: "Day 3",
-      date: "31 July",
-      time: "10:00 AM - 7:00 PM",
+      date: "30 July",
+      time: "10:00 AM - 8:00 PM",
       title: "Closing Day",
     },
   ];
@@ -62,7 +66,7 @@ export default function EventAnnouncement() {
 
   useEffect(() => {
     if (shouldReduce) {
-      setStats({ years: 30, brands: 500, states: 20, visitors: 10000 });
+      setStats({ years: 30, brands: 500, states: 20, visitors: 13000 });
       return;
     }
     const c = [];
@@ -85,7 +89,7 @@ export default function EventAnnouncement() {
       }),
     );
     c.push(
-      animate(0, 10000, {
+      animate(0, 13000, {
         duration: 1.35,
         onUpdate: (v) => setStats((s) => ({ ...s, visitors: Math.round(v) })),
       }),
@@ -150,15 +154,15 @@ export default function EventAnnouncement() {
   };
 
   return (
-    <div className="relative w-full bg-gradient-to-b from-[#fff7f6] to-[#fafafa] min-h-screen text-slate-900 antialiased overflow-x-hidden">
+    <div className="relative w-full min-h-screen text-slate-900 antialiased overflow-x-hidden">
       <style>{`
         @keyframes gradientShift {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-        .animated-gradient {background: linear-gradient(90deg,#fbeff0,#fff5f6,#fff9f7); background-size:200% 200%; animation: gradientShift 6s ease infinite;}
-        .ripple-circle{position:absolute;border-radius:50%;transform:scale(0);animation:ripple 0.8s linear;background:rgba(255,255,255,0.4);pointer-events:none}
+        .animated-gradient {background: linear-gradient(90deg,#94b9ef,#94b9ef,#94b9ef); background-size:200% 200%; animation: gradientShift 6s ease infinite;}
+        .ripple-circle{position:absolute;border-radius:50%;transform:scale(0);animation:ripple 0.8s linear;background:#94b9ef;pointer-events:none}
         @keyframes ripple{to{transform:scale(3);opacity:0}}
-        .color-divider{height:6px;border-radius:6px;background:linear-gradient(90deg,#CE1446,#B2192B,#D9737D);background-size:200% 100%;animation:gradientShift 4s linear infinite}
+        .color-divider{height:6px;border-radius:6px;background:linear-gradient(90deg,#314899,#314899,#314899);background-size:200% 100%;animation:gradientShift 4s linear infinite}
       `}</style>
-      <div className="color-divider w-full" aria-hidden></div>
+      <div className="color-divider w-full " aria-hidden></div>
 
       <aside className="fixed right-6 bottom-8 z-50 hidden md:flex flex-col gap-3 items-end">
         <motion.button
@@ -166,7 +170,7 @@ export default function EventAnnouncement() {
           whileHover={{ scale: shouldReduce ? 1 : 1.04 }}
           whileTap={{ scale: shouldReduce ? 1 : 0.98 }}
           onMouseDown={ripple}
-          className="flex items-center gap-3 px-4 py-3 rounded-full bg-[#780900] text-white shadow-2xl ring-1 ring-white/10 overflow-hidden"
+          className="flex items-center gap-3 px-4 py-3 rounded-full bg-[#314899] text-white shadow-2xl ring-1 ring-white/10 overflow-hidden"
         >
           Quick Register
         </motion.button>
@@ -175,73 +179,74 @@ export default function EventAnnouncement() {
           onClick={() => smoothScrollTo("packages")}
           whileHover={{ x: shouldReduce ? 0 : -6 }}
           onMouseDown={ripple}
-          className="px-3 py-2 rounded-full bg-white/90 text-sm text-slate-900 shadow-lg border border-white/20"
+          className="px-3 py-2 rounded-full bg-white/90 text-sm text-[#314899] shadow-lg border border-white/20"
         >
           View Packages
         </motion.button>
       </aside>
 
-      <header ref={heroRef} className="relative py-16 md:py-24 lg:py-32 px-4">
+      <header
+        ref={heroRef}
+        className="relative py-25 md:py-24 lg:py-32 px-4 bg-gradient-to-b from-[#c9f7f9] via-[#536999] to-[#394263]"
+      >
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6">
-              <span className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-[#fff0f0] to-[#fff9f8] text-[#780900] text-sm font-semibold shadow-sm">
-                31ST EDITION • 2026
+              <span className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-[#fff0f0] to-[#fff9f8] text-[#314899] text-sm font-semibold shadow-sm">
+                Autumn Winter
               </span>
-
-              <h1 className="mt-6 text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-tight tracking-tight text-slate-900">
+              <h1 className="mt-6 text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white">
                 31st SIGA Fair
-                <span className="block text-lg sm:text-2xl lg:text-3xl font-semibold text-slate-700 mt-2">
-                  Autumn Winter Collection
-                </span>
               </h1>
-
-              <p className="mt-4 text-sm sm:text-base text-slate-600 max-w-xl">
+              <p className="mt-4 text-sm sm:text-base text-white max-w-xl">
                 Organized by{" "}
-                <strong className="font-semibold text-slate-900">
+                <strong className="font-semibold text-white">
                   South India Garments Association (SIGA)
                 </strong>
-                . Join 500+ brands showcasing latest collections to retailers,
-                wholesalers, and buyers nationwide.
+                . Join 100+ brands showcasing their latest Autumn Winter
+                Collections.
               </p>
-
               <div className="mt-6 flex flex-wrap gap-3 items-center">
                 <motion.button
-                  onClick={() => setOpenReg(true)}
+                  onClick={() => {
+                    navigate("/participants-form");
+                  }}
                   whileHover={{ scale: shouldReduce ? 1 : 1.035 }}
                   whileTap={{ scale: shouldReduce ? 1 : 0.985 }}
                   onMouseDown={ripple}
-                  className="relative inline-flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-[#B2192B] to-[#780900] text-white rounded-full shadow-2xl font-semibold focus:outline-none overflow-hidden"
+                  className="relative inline-flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-[#ffffff] to-[#ffffff] text-[#394263] rounded-full shadow-2xl font-semibold focus:outline-none overflow-hidden"
                 >
-                  REGISTER
+                  Book Now
                 </motion.button>
 
-                <button
-                  onClick={() => smoothScrollTo("schedule")}
-                  className="inline-flex items-center gap-2 px-4 py-3 border border-slate-200 rounded-full bg-white shadow-sm text-sm text-slate-900"
-                  onMouseDown={ripple}
-                >
-                  VIEW SCHEDULE
-                </button>
-
-                <div className="ml-0 sm:ml-2 text-sm text-slate-500 w-full sm:w-auto">
-                  Or call:{" "}
-                  <strong className="text-slate-900">96326 48525</strong>
+                <div className="ml-0 sm:ml-2 text-sm text-white w-full sm:w-auto">
+                  Or call : <strong className="text-white">96326 48525</strong>
                 </div>
               </div>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                <span className="px-3 py-1 rounded-full bg-white/90 border border-slate-100 shadow-sm text-xs">
-                  B2B Only
+              <div className="m-2 mt-5 text-white">VISITORS : </div>
+              <div className="flex flex-wrap gap-2 md:w-[80%] w-full ">
+                <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
+                  Retail stores
                 </span>
-                <span className="px-3 py-1 rounded-full bg-white/90 border border-slate-100 shadow-sm text-xs">
-                  500+ Brands
+                <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
+                  Online Sellers
                 </span>
-                <span className="px-3 py-1 rounded-full bg-white/90 border border-slate-100 shadow-sm text-xs">
-                  10k+ Buyers
+                <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
+                  Buying House
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
+                  Wholesalers
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
+                  Large Format Stores
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
+                  Distributors
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/90 border border-[#fcfdf9] shadow-sm text-xs">
+                  Agents
                 </span>
               </div>
-
               <div
                 className="mt-6 w-36 h-2 rounded-full animated-gradient"
                 aria-hidden
@@ -273,7 +278,7 @@ export default function EventAnnouncement() {
                 </svg>
 
                 <div className="absolute top-5 left-5 bg-gradient-to-r from-white/20 to-white/5 rounded-lg px-3 py-1 backdrop-blur-sm text-white text-sm">
-                  Palace Grounds, Bangalore • 28–30 Jul 2026
+                  Palace Grounds, Bangalore • 28 - 30 Jul 2026
                 </div>
 
                 <div className="absolute left-4 top-8 w-16 h-16 rounded-full bg-gradient-to-br from-[#CE1446] to-[#B2192B] opacity-20 blur-xl" />
@@ -289,8 +294,11 @@ export default function EventAnnouncement() {
       </div>
 
       <main>
-        <section id="highlights" className="py-12 md:py-16 bg-white">
-          <div className="mx-auto max-w-7xl px-4 md:px-10">
+        <section
+          id="highlights"
+          className="py-12 md:py-16 bg-white flex flex-col gap-10 w-full"
+        >
+          <div className="mx-auto w-[90%] px-4 md:px-10">
             <div className="text-center">
               <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
                 Event Highlights
@@ -302,8 +310,8 @@ export default function EventAnnouncement() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 md:mt-10">
-              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#fff7f6] border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
-                <div className="text-2xl md:text-3xl font-extrabold text-[#CE1446]">
+              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#394263]/10 border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
+                <div className="text-2xl md:text-3xl font-extrabold text-[#314899]">
                   {stats.years}+
                 </div>
                 <div className="mt-1 text-xs md:text-sm text-slate-600">
@@ -311,8 +319,8 @@ export default function EventAnnouncement() {
                 </div>
               </div>
 
-              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#fff7f6] border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
-                <div className="text-2xl md:text-3xl font-extrabold text-[#B2192B]">
+              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#394263]/10 border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
+                <div className="text-2xl md:text-3xl font-extrabold text-[#314899]">
                   {stats.brands}+
                 </div>
                 <div className="mt-1 text-xs md:text-sm text-slate-600">
@@ -320,8 +328,8 @@ export default function EventAnnouncement() {
                 </div>
               </div>
 
-              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#fff7f6] border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
-                <div className="text-2xl md:text-3xl font-extrabold text-[#D9737D]">
+              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#394263]/10 border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
+                <div className="text-2xl md:text-3xl font-extrabold text-[#314899]">
                   {stats.states}+
                 </div>
                 <div className="mt-1 text-xs md:text-sm text-slate-600">
@@ -329,17 +337,81 @@ export default function EventAnnouncement() {
                 </div>
               </div>
 
-              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#fff7f6] border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
-                <div className="text-2xl md:text-3xl font-extrabold text-[#CE1446]">
+              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#394263]/10 border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
+                <div className="text-2xl md:text-3xl font-extrabold text-[#314899]">
                   {stats.visitors.toLocaleString()}+
                 </div>
                 <div className="mt-1 text-xs md:text-sm text-slate-600">
-                  Expected attendance
+                  Retailers Connected
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mx-auto w-[90%] px-4 md:px-10">
+            <div className="text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+                Past Two Fairs Performance:
+              </h2>
+              <p className="text-slate-600 max-w-2xl mx-auto">
+                Scale and impact of SIGA Fair
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 md:mt-10">
+              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#394263]/10 border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
+                <div className="text-2xl md:text-3xl font-extrabold text-[#314899]">
+                  1900+{" "}
+                </div>
+                <div className="mt-1 text-xs md:text-sm text-slate-600">
+                  Visiters in 2024
+                </div>
+              </div>
+
+              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#394263]/10 border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
+                <div className="text-2xl md:text-3xl font-extrabold text-[#314899]">
+                  2300+
+                </div>
+                <div className="mt-1 text-xs md:text-sm text-slate-600">
+                  Visiters in 2025
+                </div>
+              </div>
+
+              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#394263]/10 border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
+                <div className="text-2xl md:text-3xl font-extrabold text-[#314899]">
+                  5500+
+                </div>
+                <div className="mt-1 text-xs md:text-sm text-slate-600">
+                  Invitation Cards
+                </div>
+              </div>
+
+              <div className="p-4 md:p-6 bg-gradient-to-br from-white to-[#394263]/10 border border-gray-100 rounded-2xl shadow transition hover:-translate-y-1">
+                <div className="text-2xl md:text-3xl font-extrabold text-[#314899]">
+                  11000+{" "}
+                </div>
+                <div className="mt-1 text-xs md:text-sm text-slate-600">
+                  Text Messages
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* new */}
+        {/* <section className="py-10 rounded  bg-gradient-to-r from-[#394263] to-[#394263]">
+          <div className="mx-auto max-w-7xl px-4 md:px-10 text-center">
+            <h3 className="text-xl md:text-2xl font-bold text-white">
+              SHOWCASE : Men, Women & Children Wears
+            </h3>
+            <p className="text-white/90 mt-3 max-w-2xl mx-auto">
+              Wedding Wear, Ethnic Wear, Western Wear, Denims, Casual & Formal
+              Wear, Lounge Wear, Winter Wears, Women Kur es & Women daily use
+              dresses & Accessories AND ERP & Accoun ng system, security &
+              inventory management, tex le tes ng technology & bags .
+            </p>
+          </div>
+        </section> */}
 
         <section className="py-16 bg-white">
           <div className="mx-auto max-w-7xl px-4 md:px-10">
@@ -350,27 +422,9 @@ export default function EventAnnouncement() {
               transition={{ duration: 0.6 }}
               className="text-center mb-8"
             >
-              <div className="inline-flex items-center gap-3 px-4 py-2 bg-[#FEF2F2] rounded-full mb-4">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="text-[#780900]"
-                >
-                  <path
-                    d="M12 17.3l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.76L5.82 21z"
-                    fill="#780900"
-                  />
-                </svg>
-                <span className="text-sm font-medium text-[#780900]">
-                  PARTICIPATING BRANDS
-                </span>
-              </div>
-
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-                Featuring <span className="text-[#780900]">500+</span> Leading
-                Brands
+                Featuring <span className="text-[#314899]">500+</span> Past At A
+                Glance
               </h2>
 
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -403,12 +457,12 @@ export default function EventAnnouncement() {
               ))}
             </div>
 
-            <div className="text-center">
+            {/* <div className="text-center">
               <button
                 onClick={() => {
                   navigate("/gallery");
                 }}
-                className="inline-flex  cursor-pointer items-center gap-2 px-4 py-2 bg-[#780900] text-white rounded-full text-sm font-semibold shadow"
+                className="inline-flex  cursor-pointer items-center gap-2 px-4 py-2 bg-[#394263] text-white rounded-full text-sm font-semibold shadow"
               >
                 View All Brands
                 <svg
@@ -427,12 +481,65 @@ export default function EventAnnouncement() {
                   />
                 </svg>
               </button>
+            </div> */}
+          </div>
+        </section>
+
+        {/* new */}
+        <section className="py-10 rounded  bg-gradient-to-r from-[#394263] to-[#394263]">
+          <div className="mx-auto max-w-7xl px-10 md:px-10 space-y-10">
+            <h3 className="text-2xl md:text-3xl -ms-5 md:ms-25 font-bold text-white">
+              Branding Options
+            </h3>
+            <div className="text-white/90 mt-3 w-4xl mx-auto flex ">
+              <ol className="w-1/2" style={{ listStyleType: "disc" }}>
+                <li>Event Sponsorship </li>
+                <li>Sponsorship of Main Arch</li>
+                <li>Sponsorship of Main Hall Entrance Arch</li>
+                <li>Branding at Path Way</li>
+                <li>Branding at Catering Area</li>
+              </ol>
+              <ol className="w-1/2" style={{ listStyleType: "disc" }}>
+                <li>Visitor’s badges sponsorship</li>
+                <li>Water bottles Sponsorship</li>
+                <li>Invitation cards sponsorship (6000 cards)</li>
+                <li>Carry Bags Sponsorship</li>
+                <li>Advertisement in Fair book</li>
+              </ol>
             </div>
+            <h5 className="text-xl md:text-xl w-full flex items-center justify-center font-bold text-white">
+              <ul className="flex gap-10 flex-col md:flex-row">
+                <li className="space-y-2">
+                  <p>ARCH</p>
+                  <img
+                    src={arch}
+                    alt="arch"
+                    className="rounded-2xl hover:scale-105 transition-all duration-300"
+                  />
+                </li>
+                <li className="space-y-2">
+                  <p>PATHWAY</p>
+                  <img
+                    src={pathway}
+                    alt="pathway"
+                    className="rounded-2xl hover:scale-105 transition-all duration-300"
+                  />
+                </li>
+                <li className="space-y-2">
+                  <p>BAGS</p>
+                  <img
+                    src={bags}
+                    alt="bags"
+                    className="rounded-2xl hover:scale-105 transition-all duration-300"
+                  />
+                </li>
+              </ul>
+            </h5>
           </div>
         </section>
 
         {/* ---------- INSERTED: Pricing Section 2 ---------- */}
-        <section className="py-20 bg-gray-50">
+        <section id="packages" className="py-20 bg-gray-50">
           <div className="container max-w-7xl mx-auto px-4 md:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -441,7 +548,6 @@ export default function EventAnnouncement() {
               className="text-center mb-12"
             >
               <div className="flex items-center justify-center gap-3 mb-4">
-                <DollarSign className="text-[#780900]" size={28} />
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
                   Stall Packages
                 </h2>
@@ -451,104 +557,250 @@ export default function EventAnnouncement() {
               </p>
             </motion.div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="py-4 px-4 text-left text-sm font-semibold text-gray-900">
-                      PACKAGE
-                    </th>
-                    <th className="py-4 px-4 text-left text-sm font-semibold text-gray-900">
-                      SIZE
-                    </th>
-                    <th className="py-4 px-4 text-left text-sm font-semibold text-gray-900">
-                      RATE/SQ.M
-                    </th>
-                    <th className="py-4 px-4 text-left text-sm font-semibold text-gray-900">
-                      TOTAL
-                    </th>
-                    <th className="py-4 px-4 text-left text-sm font-semibold text-gray-900"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    {
-                      type: "Business Stall",
-                      size: "12 sq.m",
-                      rate: "₹5,900",
-                      total: "₹70,800",
-                      popular: false,
-                    },
-                    {
-                      type: "Brand Wagon",
-                      size: "24 sq.m",
-                      rate: "₹6,900",
-                      total: "₹1,65,600",
-                      popular: false,
-                    },
-                    {
-                      type: "Premium Wagon",
-                      size: "30 sq.m",
-                      rate: "₹6,900",
-                      total: "₹2,07,000",
-                      popular: true,
-                    },
-                    {
-                      type: "Executive Wagon",
-                      size: "40 sq.m",
-                      rate: "₹6,900",
-                      total: "₹2,76,000",
-                      popular: false,
-                    },
-                  ].map((row, idx) => (
-                    <motion.tr
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      viewport={{ once: true }}
-                      className={`border-b border-gray-100 hover:bg-white transition-colors ${row.popular ? "bg-[#CE1446]/5" : ""}`}
+            <div className="w-full">
+              {/* Mobile View: Cards */}
+              <div className="grid grid-cols-1 gap-6 md:hidden">
+                {[
+                  {
+                    type: "Business Stall",
+                    size: "12 Sqr Mtr 129 sq ft",
+                    size2: "(4 X 3)",
+                    price: "₹ 70,800",
+                    include1: "1 Table, 2 chair, 3 spot light, 1 halogen lamp,",
+                    include2: "1 power point, 2 Complimentary Lunch",
+                    popular: true,
+                  },
+                  {
+                    type: "Brand Wagon",
+                    size: "24 Sqr Mtr 258 sq ft",
+                    size2: "(6 X 4)",
+                    price: "₹ 1,41,600",
+                    include1: "2 Table, 4 chair, 4 spot light, 2 halogen lamp,",
+                    include2: "2 power point, 4 Complimentary Lunch",
+                    popular: false,
+                  },
+                  {
+                    type: "Premium Wagon",
+                    size: "30 Sqr Mtr 322 sq ft",
+                    size2: "(6 X 5)",
+                    price: "₹ 1,77,000",
+                    include1:
+                      "3 Table, 6 chair, 6 spot light, 3 halogen lamps,",
+                    include2: "2 power point, 5 Complimentary Lunch",
+                    popular: true,
+                  },
+                  {
+                    type: "Executive Wagon",
+                    size: "40 Sqr Mtr 428 sq ft",
+                    size2: "(8 X 5)",
+                    price: "₹ 2,36,000",
+                    include1:
+                      "4 Table, 8 chair, 8 spot light, 4 halogen lamps,",
+                    include2: "2 power point, 6 Complimentary Lunch",
+                    popular: false,
+                  },
+                  {
+                    type: "Executive Wagon plus",
+                    size: "48 Sqr Mtr 516 sq ft",
+                    size2: "(8 X 6)",
+                    price: "₹ 2,83,200",
+                    include1:
+                      "6 Table, 8 chair, 8 spot light, 4 halogen lamps,",
+                    include2: "2 power point, 8 Complimentary Lunch",
+                    popular: true,
+                  },
+                ].map((row, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    viewport={{ once: true }}
+                    className={`p-6 rounded-2xl border-2 transition-all ${
+                      row.popular
+                        ? "bg-[#394263]/5 border-[#394263]/20 shadow-lg"
+                        : "bg-white border-gray-100 shadow-md"
+                    }`}
+                  >
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <div className="text-xl font-bold text-gray-900">
+                          {row.size}
+                        </div>
+                        <div className="text-sm text-gray-500 font-medium">
+                          {row.size2}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mb-6">
+                      <div className="text-2xl font-black text-[#314899]">
+                        {row.price}
+                      </div>
+                      <div className="text-xs text-gray-500">+ GST 18%</div>
+                    </div>
+
+                    <div className="space-y-2 mb-8 text-sm text-gray-700">
+                      <div className="flex gap-2">
+                        <ChevronRight className="size-4 shrink-0 text-[#314899] mt-0.5" />
+                        <span>{row.include1}</span>
+                      </div>
+                      <div className="flex gap-2">
+                        <ChevronRight className="size-4 shrink-0 text-[#314899] mt-0.5" />
+                        <span>{row.include2}</span>
+                      </div>
+                    </div>
+
+                    <Button
+                      className="w-full bg-[#394263] hover:bg-[#314899] text-white font-bold py-3 rounded-xl shadow-lg transition-all active:scale-95"
+                      onClick={() => navigate("/participants-form")}
                     >
-                      <td className="py-4 px-4">
-                        <div className="font-medium text-gray-900">
-                          {row.type}
-                        </div>
-                        {row.popular && (
-                          <span className="inline-flex items-center gap-1 mt-1 px-2 py-1 bg-[#780900] text-white text-xs">
-                            <Award size={10} />
-                            MOST POPULAR
-                          </span>
-                        )}
-                      </td>
-                      <td className="py-4 px-4 text-gray-700">{row.size}</td>
-                      <td className="py-4 px-4 font-medium text-gray-900">
-                        {row.rate}
-                      </td>
-                      <td className="py-4 px-4">
-                        <div className="font-medium text-gray-900">
-                          {row.total}
-                        </div>
-                        <div className="text-xs text-gray-500">+ GST 18%</div>
-                      </td>
-                      <td className="py-4 px-4">
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          className="px-4 py-2 bg-[#780900] text-white text-sm font-medium flex items-center gap-2"
+                      BOOK NOW
+                    </Button>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Desktop View: Table */}
+              <div className="hidden md:block overflow-x-auto">
+                <div className="flex flex-col gap-10 justify-center items-center">
+                  <table className="w-full lg:w-[90%] border-collapse">
+                    <thead>
+                      <tr className="border-b-2 border-gray-200">
+                        <th className="py-4 px-6 text-left text-sm font-bold text-gray-900">
+                          SIZE
+                        </th>
+                        <th className="py-4 px-6 text-left text-sm font-bold text-gray-900">
+                          PRICE
+                        </th>
+                        <th className="py-4 px-6 text-left text-sm font-bold text-gray-900">
+                          INCLUDES
+                        </th>
+                        <th className="py-4 px-6"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        {
+                          type: "Business Stall",
+                          size: "12 Sqr Mtr 129 sq ft",
+                          size2: "(4 X 3)",
+                          price: "₹ 70,800",
+                          include1:
+                            "1 Table, 2 chair, 3 spot light, 1 halogen lamp,",
+                          include2: "1 power point, 2 Complimentary Lunch",
+                          popular: true,
+                        },
+                        {
+                          type: "Brand Wagon",
+                          size: "24 Sqr Mtr 258 sq ft",
+                          size2: "(6 X 4)",
+                          price: "₹ 1,41,600",
+                          include1:
+                            "2 Table, 4 chair, 4 spot light, 2 halogen lamp,",
+                          include2: "2 power point, 4 Complimentary Lunch",
+                          popular: false,
+                        },
+                        {
+                          type: "Premium Wagon",
+                          size: "30 Sqr Mtr 322 sq ft",
+                          size2: "(6 X 5)",
+                          price: "₹ 1,77,000",
+                          include1:
+                            "3 Table, 6 chair, 6 spot light, 3 halogen lamps,",
+                          include2: "2 power point, 5 Complimentary Lunch",
+                          popular: true,
+                        },
+                        {
+                          type: "Executive Wagon",
+                          size: "40 Sqr Mtr 428 sq ft",
+                          size2: "(8 X 5)",
+                          price: "₹ 2,36,000",
+                          include1:
+                            "4 Table, 8 chair, 8 spot light, 4 halogen lamps,",
+                          include2: "2 power point, 6 Complimentary Lunch",
+                          popular: false,
+                        },
+                        {
+                          type: "Executive Wagon plus",
+                          size: "48 Sqr Mtr 516 sq ft",
+                          size2: "(8 X 6)",
+                          price: "₹ 2,83,200",
+                          include1:
+                            "6 Table, 8 chair, 8 spot light, 4 halogen lamps,",
+                          include2: "2 power point, 8 Complimentary Lunch",
+                          popular: true,
+                        },
+                      ].map((row, idx) => (
+                        <motion.tr
+                          key={idx}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: idx * 0.1 }}
+                          viewport={{ once: true }}
+                          className={`border-b border-gray-100 hover:bg-gray-50/50 transition-colors ${
+                            row.popular ? "bg-[#394263]/5" : ""
+                          }`}
                         >
-                          <ChevronRight size={14} />
-                          BOOK NOW
-                        </motion.button>
-                      </td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
+                          <td className="py-6 px-6">
+                            <div className="font-bold text-gray-900">
+                              {row.size}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              {row.size2}
+                            </div>
+                          </td>
+                          <td className="py-6 px-6">
+                            <div className="font-black text-[#314899] text-lg">
+                              {row.price}
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              + GST 18%
+                            </div>
+                          </td>
+                          <td className="py-6 px-6 text-gray-700 text-sm">
+                            {row.include1}
+                            <br />
+                            {row.include2}
+                          </td>
+                          <td className="py-6 px-6">
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="px-6 py-2 bg-[#394263] hover:bg-[#314899] text-white text-sm font-bold flex items-center gap-2 rounded-lg shadow-md transition-all"
+                              onClick={() => navigate("/participants-form")}
+                            >
+                              <ChevronRight size={14} />
+                              BOOK NOW
+                            </motion.button>
+                          </td>
+                        </motion.tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="w-full mt-8 md:mt-12">
+                <div className="w-full md:w-[85%] mx-auto p-4 bg-[#394263]/5 rounded-xl border border-[#394263]/10">
+                  <div className="flex gap-3">
+                    <div className="font-black text-[#314899] shrink-0">
+                      Note :
+                    </div>
+                    <div className="text-sm text-gray-700 leading-relaxed">
+                      Extra Lights, Halogen, stands, Hangars, Mannequins,
+                      Display Recks & other display supports, Helper Staff &
+                      Hostess available at venue subject to prior booking.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
         {/*  END INSERTED: Pricing Section 2 */}
 
-        <footer className="py-10 rounded  bg-gradient-to-r from-[#B2192B] to-[#780900]">
+        <footer className="py-10 rounded  bg-gradient-to-r from-[#394263] to-[#394263]">
           <div className="mx-auto max-w-7xl px-4 md:px-10 text-center">
             <h3 className="text-xl md:text-2xl font-bold text-white">
               Ready to Exhibit at SIGA Fair 2026?
@@ -559,8 +811,10 @@ export default function EventAnnouncement() {
             </p>
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
-                onClick={() => setOpenReg(true)}
-                className="px-6 py-3 bg-white text-[#780900] rounded-full font-semibold shadow"
+                onClick={() => {
+                  navigate("/participants-form");
+                }}
+                className="px-6 py-3 bg-white text-[#394263] rounded-full font-semibold shadow"
                 onMouseDown={ripple}
               >
                 BOOK YOUR STALL NOW
@@ -578,24 +832,27 @@ export default function EventAnnouncement() {
             </div>
           </div>
         </footer>
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#CE1446]/5  to-[#CE1446]/5"></div>
+        <section className="relative md:h-[80vh] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#394263]/10  to-[#394263]/10"></div>
 
-          <div className="container max-w-7xl mx-auto px-4 md:px-8">
+          <div className="container max-w-7xl mx-auto py-20 md:py-0 px-4 md:px-8 ">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Calendar className="text-[#780900]" size={28} />
+              <div className="flex items-center justify-center gap-3 mb-4 ">
+                <Calendar className="text-[#394263]" size={28} />
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
                   Event Schedule
                 </h2>
               </div>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Three days of intensive business networking and exhibitions
+              </p>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Stalls Preparation on 27 July
               </p>
             </motion.div>
 
@@ -607,7 +864,7 @@ export default function EventAnnouncement() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.2 }}
                   viewport={{ once: true }}
-                  className={`p-8 z-10 bg-white border-2 border-gray-100 hover:border-[#780900] transition-colors`}
+                  className={`p-8 z-10 bg-white shadow-[0_10px_5px_#394263] rounded-sm border-2 border-gray-100 hover:border-[#394263] transition-colors`}
                 >
                   <div className="text-center mb-6">
                     <div className="text-sm text-gray-500 mb-2 flex items-center justify-center gap-2">
@@ -617,39 +874,19 @@ export default function EventAnnouncement() {
                     <div className="text-2xl font-bold text-gray-900 mb-2">
                       {day.date}
                     </div>
-                    <div className="text-lg text-[#780900] font-medium">
+                    <div className="text-lg text-[#394263] font-medium">
                       {day.time}
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
                     {day.title}
                   </h3>
-                  <ul className="space-y-3 text-gray-600">
-                    {idx === 0 && [
-                      "Inauguration Ceremony",
-                      "CEO Roundtable",
-                      "Networking Lunch",
-                      "Exhibition Opens",
-                    ]}
-                    {idx === 1 && [
-                      "B2B Meetings",
-                      "Trend Analysis Session",
-                      "Product Launches",
-                      "Evening Cocktail",
-                    ]}
-                    {idx === 2 && [
-                      "Final Business Deals",
-                      "Awards Ceremony",
-                      "Closing Gala",
-                      "Check-out begins at 8 PM",
-                    ]}
-                  </ul>
                 </motion.div>
               ))}
             </div>
           </div>
-          <div className="absolute top-0 left-0 w-64 h-64 bg-[#CE1446]/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#CE1446]/10 rounded-full translate-x-1/3 translate-y-1/3"></div>
+          <div className="absolute top-0 left-0 w-64 h-64 bg-[#394263]/50 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#394263]/50 rounded-full translate-x-1/3 translate-y-1/3"></div>
         </section>
       </main>
 
@@ -657,7 +894,7 @@ export default function EventAnnouncement() {
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={() => setOpenReg(true)}
-          className="px-4 py-3 rounded-full bg-[#780900] text-white shadow-lg"
+          className="px-4 py-3 rounded-full bg-[#394263] text-white shadow-lg"
           onMouseDown={ripple}
         >
           Register

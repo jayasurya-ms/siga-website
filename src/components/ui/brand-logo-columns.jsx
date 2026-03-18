@@ -3,7 +3,6 @@ import React from "react";
 
 export const BrandColumn = ({ logos, duration = 15, className }) => {
   if (!logos || logos.length === 0) return null;
-console.log(className);
 
   const baseDuration = duration * 1.5;
 
